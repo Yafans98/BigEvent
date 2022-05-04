@@ -148,4 +148,26 @@ $(() => {
       layer.close(index);
     });
   })
+
+
+  //修改文章分类
+  let indexEdit = null;
+  $('tbody').on('click', '#btn-edit', function () {
+    let id = $(this).parent().siblings('[name=artId]').attr('data-id');
+    indexEdit = layer.open({
+      type: 2,
+      content: './art_edit.html',
+      area: ['100%', '100%'],
+    })
+    $.ajax({
+      method: 'GET',
+      url: '/my/article/' + id,
+      success: res => {
+        if (res.status !== 0) {
+          return layer.msg('获取文章信息失败!');
+        }
+        localStorage.setItem('data', JSON.stringify(res));
+      }
+    })
+  })
 })

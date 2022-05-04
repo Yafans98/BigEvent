@@ -62,16 +62,21 @@
   <script type="text/html" id="tpl-table">
     {{each data}}
     <tr>
+      <input type="hidden" name="artId" data-id="{{$value.Id}}">
       <td>{{$value.title}}</td>
       <td>{{$value.cate_name}}</td>
       <td>{{$value.pub_date|dataFormat}}</td>
       <td>{{$value.state}}</td>
       <td>
-        <button type="button" class="layui-btn layui-btn-xs">编辑</button>
+        <button type="button" class="layui-btn layui-btn-xs" id="btn-edit">编辑</button>
         <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" id="btn-delete" data-id="{{$value.Id}}">删除</button>
       </td>
-    </tr>
+    </tr> 
     {{/each}}
+  </script>
+
+  <script type="text/html" id="dialog-editArt">
+
   </script>
 
   <!-- 分类可选项的模板结构 -->
